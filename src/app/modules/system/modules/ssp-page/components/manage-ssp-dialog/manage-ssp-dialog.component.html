@@ -1,0 +1,18 @@
+<section class="dialog">
+  <div class="dialog__header">
+    <h2 class="dialog__title">
+      New SSP
+    </h2>
+    <mat-icon [svgIcon]="ICONS.CLOSE" mat-dialog-close></mat-icon>
+  </div>
+
+  <mat-dialog-content class="dialog__content">
+    <wl-tab-group></wl-tab-group>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="dialog__footer" align="end">
+    <button class="dialog__footer-button" mat-raised-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="callSubmitInTabMainSettings()">Save</button>
+  </mat-dialog-actions>
+
+</section>

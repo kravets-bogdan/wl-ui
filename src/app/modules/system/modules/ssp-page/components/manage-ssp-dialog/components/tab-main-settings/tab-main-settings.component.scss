@@ -1,0 +1,228 @@
+.tab {
+	padding-top: 24px;
+
+	&__name {
+		justify-content: space-around;
+		display: flex;
+	}
+
+	&__state {
+		background: color-mix(in srgb, var(--primary-color) 20%, transparent);
+		justify-content: center;
+		align-items: center;
+		border-radius: 4px;
+		margin-left: 24px;
+		padding: 16px 8px;
+		display: flex;
+		height: 40px;
+
+		&--active {
+			background: color-mix(in srgb, var(--primary-color) 20%, transparent);
+		}
+
+		&--disable {
+			background: color-mix(in srgb, var(--black-color) 10%, transparent);
+		}
+	}
+
+	&__block {
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+
+	&__text {
+		font-family: Roboto;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 20px;
+	}
+
+	&__circle {
+		border-radius: 50%;
+		margin-right: 7px;
+		height: 6px;
+		width: 6px;
+
+		&--active {
+			background: var(--primary-color);
+		}
+
+		&--disable {
+			background: var(--warning-color);
+		}
+	}
+
+	&__input-block {
+		justify-content: space-between;
+		margin-bottom: 2px;
+		display: flex;
+	}
+
+	&__icon {
+		fill: color-mix(in srgb, var(--blue-color) 100%, transparent);
+		margin-left: 10px;
+		height: 17px;
+		width: 17px;
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&--position {
+			position: relative;
+			top: 3px;
+		}
+	}
+
+	&__confidentail {
+		margin-bottom: 24px;
+		align-items: center;
+		display: flex;
+	}
+
+	&__slide {
+		margin-left: 10px;
+
+		&--mr {
+			margin-right: 10px;
+		}
+	}
+
+	&__qps-limit-title {
+		margin-bottom: 12px;
+		font-family: Roboto;
+		line-height: 24px;
+		font-weight: 400;
+
+		&::after {
+			content: ' *';
+			color: var(--red-color);
+		}
+	}
+
+	&__qps-limit {
+		flex-direction: column;
+		margin-bottom: 24px;
+		display: flex;
+	}
+
+	&__qps-container {
+		justify-content: space-between;
+		display: flex;
+	}
+
+	&__text-sufix {
+		white-space: nowrap;
+		font-family: Roboto;
+		line-height: 19px;
+		font-weight: 400;
+		font-size: 14px;
+	}
+}
+
+.mat-form-field {
+	--mdc-outlined-text-field-error-focus-label-text-color: none;
+	--mdc-outlined-text-field-error-focus-outline-color: none;
+	--mdc-outlined-text-field-error-caret-color: none;
+	margin-bottom: 2px;
+	margin-bottom: 24px;
+	line-height: 19px;
+	font-size: 14px;
+
+	&--medium {
+		max-width: 224px;
+		margin-bottom: 8px;
+	}
+
+	&--small {
+		max-width: 200px;
+	}
+}
+
+mat-label {
+	line-height: 19px;
+	font-size: 14px;
+}
+
+.mat-error {
+	height: 20px;
+}
+
+::ng-deep .mat-mdc-form-field-error-wrapper {
+	padding-left: 0;
+}
+
+.mat-mdc-form-field-error {
+	line-height: 20px;
+	font-size: 12px;
+}
+
+.mat-mdc-select {
+	line-height: 19px;
+	font-size: 14px;
+}
+
+.mat-mdc-option {
+	color: var(--black-color);
+}
+
+::ng-deep .mat-mdc-form-field-infix {
+	align-items: center;
+	display: flex;
+}
+
+.mat-mdc-slide-toggle.mat-accent {
+	--mdc-switch-selected-pressed-state-layer-color: color-mix(in srgb, var(--primary-color) 60%, transparent);
+	--mdc-switch-selected-focus-state-layer-color: color-mix(in srgb, var(--primary-color) 60%, transparent);
+	--mdc-switch-selected-hover-state-layer-color: color-mix(in srgb, var(--primary-color) 60%, transparent);
+	--mdc-switch-selected-pressed-handle-color: color-mix(in srgb, var(--primary-color) 100%, transparent);
+	--mdc-switch-selected-pressed-track-color: color-mix(in srgb, var(--primary-color) 50%, transparent);
+	--mdc-switch-selected-focus-handle-color: color-mix(in srgb, var(--primary-color) 100%, transparent);
+	--mdc-switch-selected-hover-handle-color: color-mix(in srgb, var(--primary-color) 100%, transparent);
+	--mdc-switch-selected-focus-track-color: color-mix(in srgb, var(--primary-color) 50%, transparent);
+	--mdc-switch-selected-hover-track-color: color-mix(in srgb, var(--primary-color) 50%, transparent);
+	--mdc-switch-selected-handle-color: color-mix(in srgb, var(--primary-color) 100%, transparent);
+	--mdc-switch-selected-track-color: color-mix(in srgb, var(--primary-color) 40%, transparent);
+}
+
+.mat-mdc-slide-toggle {
+	--mdc-switch-unselected-pressed-track-color: color-mix(in srgb, var(--black-color) 40%, transparent);
+	--mdc-switch-unselected-hover-track-color: color-mix(in srgb, var(--black-color) 40%, transparent);
+	--mdc-switch-unselected-focus-track-color: color-mix(in srgb, var(--black-color) 40%, transparent);
+	--mdc-switch-unselected-track-color: color-mix(in srgb, var(--black-color) 40%, transparent);
+	--mdc-switch-unselected-pressed-handle-color: var(--white-color);
+	--mdc-switch-unselected-focus-handle-color: var(--white-color);
+	--mdc-switch-unselected-hover-handle-color: var(--white-color);
+	--mdc-switch-unselected-handle-color: var(--white-color);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+::ng-deep .mat-mdc-form-field-required-marker {
+	color: var(--red-color);
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+	height: 40px;
+}
+
+::ng-deep .mat-mdc-form-field-flex {
+	margin-top: -7px;
+}
+
+::ng-deep .mdc-notched-outline__notch {
+	display: flex;
+}
+
+::ng-deep .mdc-notched-outline--notched .mdc-notched-outline__notch {
+	display: block;
+}

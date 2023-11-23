@@ -1,0 +1,35 @@
+.dialog {
+	position: relative;
+
+	&__header {
+		border-bottom: 1px solid color-mix(in srgb, var(--black-color) 10%, transparent);
+		background-color: var(--white-color);
+		justify-content: space-between;
+		align-items: center;
+		padding: 24px 20px;
+		display: flex;
+	}
+
+	&__title {
+		line-height: 24px;
+		font-weight: 600;
+		font-size: 20px;
+		margin: 0;
+	}
+
+	&__content {
+		padding: 0 20px 2px 24px;
+		position: relative;
+	}
+
+	&__footer {
+		border-top: 1px solid color-mix(in srgb, var(--black-color) 10%, transparent);
+		padding: 18px 20px;
+	}
+
+	&__footer-button {
+		background-color: var(--white-color);
+		color: var(--black-color);
+		margin-right: 16px;
+	}
+}

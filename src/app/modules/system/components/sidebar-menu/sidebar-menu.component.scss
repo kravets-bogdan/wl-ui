@@ -1,0 +1,47 @@
+.main-menu-wrapper {
+	width: 220px;
+	height: 100vh;
+	padding: 0 12px;
+	margin: 0 20px 0 0;
+}
+.main-menu-ul {
+	font-size: 12px;
+
+	a {
+		border-radius: 8px;
+		padding: 10px 12px;
+		display: flex;
+		gap: 16px;
+		align-items: center;
+	}
+
+	.is-active,
+	.is-active:hover,
+	.is-active:focus {
+		background-color: rgba(20, 153, 117, 0.08);
+		font-weight: 600;
+	}
+
+	a:hover,
+	a:focus {
+		background-color: rgba(50, 50, 60, 0.05);
+	}
+}
+.main-menu-parent {
+	color: rgba(50, 50, 60, 0.7);
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 20px;
+	letter-spacing: -0.2px;
+	margin: 16px 0 8px 12px;
+}
+
+.main-menu-logo {
+	//margin: 16px 12px;
+	display: block;
+	font-family: -apple-system, BlinkMacSystemFont, AvenirNextCyr-Medium, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: -0.16px;
+}

@@ -1,0 +1,32 @@
+<section style="padding: 10px">
+	<div style="display: flex; justify-content: space-between">
+		<h2 (click)="openDialog()">SSPs</h2>
+		<button mat-button color="primary" mat-raised-button>+ NewSSP</button>
+	</div>
+	<div style="display: flex; justify-content: space-between">
+		<div>
+			<mat-form-field appearance="outline" class="ssp-page-search dense-2" style="padding: 5px 10px; height: 30px;"
+				color="primary">
+				<mat-label>Search</mat-label>
+				<input matInput placeholder="Placeholder">
+				<mat-icon class="ssp-page-search-icon" matPrefix [svgIcon]="ICONS.SEARCH"></mat-icon>
+			</mat-form-field>
+			<mat-form-field appearance="outline" class="ssp-page-search dense-2">
+				<mat-label>Account Manager</mat-label>
+				<select matNativeControl required>
+					<option value="manager">Alexander Copperfield</option>
+					<option value="saab">Bincoln Philips</option>
+					<option value="mercedes">Carcus Dorwart</option>
+					<option value="audi">Daren Siphron</option>
+				</select>
+			</mat-form-field>
+
+		</div>
+		<mat-tab-group (selectedTabChange)="onTabChange($event)">
+			<mat-tab *ngFor="let tab of tabs" label="{{ tab.title }}"> </mat-tab>
+		</mat-tab-group>
+	</div>
+	<div *ngIf="selectedTabIndex === 0">
+		<wl-ssp-table [tableData]="tableData"></wl-ssp-table>
+	</div>
+</section>

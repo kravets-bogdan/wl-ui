@@ -1,0 +1,102 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$admixer-primary-palette: (
+	50: #e8f5e9,
+	100: #c8e6c9,
+	200: #a5d6a7,
+	300: #81c784,
+	400: #66bb6a,
+	500: var(--primary-color),
+	600: #008c43,
+	700: #007737,
+	800: #00622e,
+	900: #004d20,
+	contrast: (
+		//50: var(--white-color),
+		//100: var(--black-color),
+		//200: var(--black-color),
+		//300: var(--black-color),
+		//400: var(--black-color),
+		//500: var(--white-color),
+		//600: var(--white-color),
+		//700: var(--white-color),
+		//800: var(--white-color),
+		//900: var(--white-color),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+	),
+);
+
+$admixer-accent-palette: (
+	50: #e6f2ff,
+	100: #b3daff,
+	200: #80c2ff,
+	300: #4da9ff,
+	400: #339eff,
+	500: var(--blue-color),
+	600: #2f8ee6,
+	700: #2979cc,
+	800: #2465b3,
+	900: #1f5099,
+	contrast: (),
+);
+
+$admixer-warn-palette: (
+	50: #ffebee,
+	100: #ffcdd2,
+	200: #ef9a9a,
+	300: #e57373,
+	400: #ef5350,
+	500: var(--red-color),
+	600: #c62828,
+	700: #b71c1c,
+	800: #d32f2f,
+	900: #b71c1c,
+	A100: #ff8a80,
+	A200: #ff5252,
+	A400: #ff1744,
+	A700: #d50000,
+	contrast: (),
+);
+
+$admixer-primary: mat.define-palette($admixer-primary-palette);
+$admixer-accent: mat.define-palette($admixer-accent-palette);
+$admixer-warn: mat.define-palette($admixer-warn-palette);
+
+$admixer-theme: mat.define-dark-theme(
+	(
+		color: (
+			primary: $admixer-primary,
+			accent: $admixer-accent,
+			warn: $admixer-warn,
+		),
+		typography: mat.define-typography-config(),
+		density: 0,
+	)
+);
+$admixer-theme-light: mat.define-light-theme(
+	(
+		color: (
+			primary: $admixer-primary,
+			accent: $admixer-accent,
+			warn: $admixer-warn,
+		),
+		typography: mat.define-typography-config(),
+		density: 0,
+	)
+);
+@include mat.core-theme($admixer-theme);
+@include mat.button-theme($admixer-theme);
+@include mat.chips-theme($admixer-theme-light);
+@include mat.tabs-theme($admixer-theme-light);
+@include mat.legacy-form-field-color($admixer-theme);
+.dense-1 {
+	@include mat.all-component-densities(-1);
+}
+
+.dense-2 {
+	@include mat.all-component-densities(-2);
+}
+
+.dense-3 {
+	@include mat.all-component-densities(-3);
+}

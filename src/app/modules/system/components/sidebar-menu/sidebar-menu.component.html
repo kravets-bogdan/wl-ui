@@ -1,0 +1,22 @@
+<section class="main-menu-wrapper app-label">
+	<div class="main-menu-logo pointer" [routerLink]="'hb-dashboard'">
+		<img src="../../../../../assets/icons/Logo.svg" />
+	</div>
+	<ul *ngFor="let item of menu" class="main-menu-ul">
+		<li *ngIf="item!.menuItem!.children!.length === 0">
+			<a [routerLink]="item.menuItem.url" routerLinkActive="is-active"
+				><img src="assets/icons/{{ item.menuItem.icon }}.svg" />{{ item.menuItem.title }}</a
+			>
+		</li>
+		<li *ngIf="item!.menuItem!.children!.length !== 0" class="main-menu-parent">
+			{{ item.menuItem.displayName }}
+		</li>
+		<ul *ngIf="item!.menuItem!.children!.length > 0">
+			<li *ngFor="let child of item!.menuItem.children">
+				<a [routerLink]="child.menuItem.url" routerLinkActive="is-active"
+					><img src="assets/icons/{{ child.menuItem.icon }}.svg" />{{ child.menuItem.title }}</a
+				>
+			</li>
+		</ul>
+	</ul>
+</section>

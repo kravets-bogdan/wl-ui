@@ -1,0 +1,40 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl": "./",
+		"outDir": "./dist/out-tsc",
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"sourceMap": true,
+		"declaration": false,
+		"downlevelIteration": true,
+		"experimentalDecorators": true,
+		"moduleResolution": "node",
+		"importHelpers": true,
+		"target": "ES2022",
+		"module": "ES2022",
+        "resolveJsonModule": true,
+		"useDefineForClassFields": false,
+		"strictPropertyInitialization": false,
+		"lib": ["ES2022", "dom"],
+		"paths": {
+			"@wl-core/pipes/*": ["src/app/core/pipes/*"],
+			"@wl-shared/*": ["src/app/shared/*"],
+			"@wl-vendors/*": ["src/assets/vendors/*"],
+			"@wl-store/*": ["src/app/store/*"],
+			"@wl-test-helpers": ["src/testing"],
+			"@wl/*": ["src/app/*"]
+		}
+	},
+	"angularCompilerOptions": {
+		"enableI18nLegacyMessageIdFormat": false,
+		"strictInjectionParameters": true,
+		"strictInputAccessModifiers": true,
+		"strictTemplates": true
+	}
+}

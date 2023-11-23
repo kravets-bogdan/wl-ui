@@ -1,0 +1,30 @@
+<mat-tab-group class="tab-group" (selectedTabChange)="validateForm()" fitInkBarToContent="true" disableRipple="true">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon [svgIcon]="ICONS.SETTINGS" class="tab-group__icon"></mat-icon>
+      <span class="tab-group__title-text">Main Settings</span>
+    </ng-template>
+    <wl-tab-main-settings></wl-tab-main-settings>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon [svgIcon]="ICONS.FILTER" class="tab-group__icon"></mat-icon>
+      <span class="tab-group__title-text">Inventory Filters</span>
+
+    </ng-template>
+    Content 1
+  </mat-tab><mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon [svgIcon]="ICONS.INSTANT_MIX" class="tab-group__icon"></mat-icon>
+      <span class="tab-group__title-text">Demand Rules</span>
+    </ng-template>
+    Content 1
+  </mat-tab><mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon [svgIcon]="ICONS.STATISTIC" class="tab-group__icon"></mat-icon>
+      <span class="tab-group__title-text">Access to Statistics</span>
+    </ng-template>
+    Content 1
+  </mat-tab>
+</mat-tab-group>

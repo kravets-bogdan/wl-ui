@@ -1,0 +1,47 @@
+.tab-group {
+	position: relative;
+
+	&__icon {
+		margin-right: 6px;
+		width: 20px;
+		height: 20px;
+	}
+
+	&__title-text {
+		font-family: Roboto;
+		font-size: 15px;
+		font-weight: 500;
+		line-height: 26px;
+	}
+}
+
+::ng-deep .mdc-tab {
+	justify-content: start;
+	max-width: fit-content;
+	margin-right: 21px;
+	padding: 0;
+}
+
+::ng-deep .mat-mdc-tab-group {
+	position: relative;
+	--mat-tab-header-inactive-hover-label-text-color: var(--primary-color);
+	--mat-tab-header-inactive-ripple-color: transparent;
+	--mat-tab-header-active-ripple-color: transparent;
+}
+
+::ng-deep mat-tab-header {
+	border-bottom: 1px solid color-mix(in srgb, var(--black-color) 10%, transparent);
+}
+
+::ng-deep .mat-mdc-tab-header {
+	background-color: var(--white-color);
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0 0 0;
+	position: sticky;
+	display: flex;
+	z-index: 20;
+	right: 0;
+	left: 0;
+	top: 0;
+}

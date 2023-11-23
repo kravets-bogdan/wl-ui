@@ -1,0 +1,111 @@
+.main-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 4px 12px 4px 0;
+	font-family: -apple-system, BlinkMacSystemFont, AvenirNextCyr-Medium, Arial, Helvetica, sans-serif;
+
+	.homepage__link {
+		height: 16px;
+	}
+
+	.main-bar-routes {
+		display: flex;
+		gap: 8px;
+	}
+
+	.main-bar-menu {
+		display: flex;
+		gap: 8px;
+		color: #32323c;
+		position: relative;
+	}
+}
+.main-bar-routes-list {
+	display: flex;
+	gap: 8px;
+
+	li {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+
+		a,
+		span {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			max-width: 150px;
+			white-space: nowrap;
+		}
+	}
+}
+.main-bar-menu .main-bar-menu-button {
+	border-radius: 50%;
+	transition: background-color 200ms ease-in-out 0s;
+	padding: 8px 8px 5px 8px;
+	cursor: pointer;
+}
+
+.main-bar-menu .main-bar-menu-button:hover {
+	background: rgba(50, 50, 60, 0.1);
+}
+
+.main-bar-menu-profile {
+	border-radius: 4px;
+	background: #fff;
+	box-shadow: 0px 4px 10px 0px rgba(50, 50, 60, 0.1);
+	width: 260px;
+	position: absolute;
+	top: 44px;
+	right: 0;
+	z-index: 10;
+}
+
+.main-bar-menu-profile-name {
+	color: rgba(50, 50, 60, 0.9);
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 400;
+}
+
+.main-bar-menu-profile-email {
+	color: rgba(50, 50, 60, 0.7);
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 20px;
+	letter-spacing: -0.2px;
+}
+
+.main-bar-menu-profile-info {
+	padding: 12px 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	border-bottom: 1px solid rgba(50, 50, 60, 0.1);
+}
+
+.main-bar-menu-profile-menu {
+	li {
+		padding: 12px 16px;
+		display: flex;
+		gap: 8px;
+		font-size: 14px !important;
+		align-items: center;
+		font: 1em sans-serif;
+		font-weight: 500;
+		cursor: pointer;
+
+		.svg {
+			height: 16px;
+			width: 16px;
+		}
+	}
+
+	li:hover {
+		background: rgba(50, 50, 60, 0.05);
+	}
+
+	li:first-child {
+		border-bottom: 1px solid rgba(50, 50, 60, 0.1);
+	}
+}

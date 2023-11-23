@@ -1,0 +1,38 @@
+table {
+	width: 100%;
+}
+
+th.mat-sort-header-sorted {
+	color: black;
+}
+.actions-buttons {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  text-align: right;
+  mat-icon {
+	transform: scale(0.8);
+  }
+}
+
+tr:hover  {
+  background: rgba(0, 0, 0, 0.04);
+
+  .actions-buttons{
+	opacity: 1;
+
+  }
+}
+
+.ssp-table {
+  th {
+	background-color: rgba(242, 243, 245, 1);
+  }
+  th:hover {
+	background: rgba(0, 0, 0, 0.04);
+
+  }
+}
+
+.ssp-table-chip {
+  height: 20px;
+}

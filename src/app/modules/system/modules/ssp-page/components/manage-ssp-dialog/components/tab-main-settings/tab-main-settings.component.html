@@ -1,0 +1,154 @@
+<form [formGroup]="form" class="tab">
+  <!-- Name -->
+  <div class="tab__name">
+    <mat-form-field color="primary" appearance="outline" class="mat-form-field" subscriptSizing="dynamic">
+      <mat-label>SSP Name</mat-label>
+      <input class="mat-form-field__input" formControlName="name" matInput required maxlength="70">
+      <mat-error>
+        <ng-container *ngIf="form.controls['name']?.hasError('required')">
+          Required field
+        </ng-container>
+        <ng-container *ngIf="form.controls['name']?.hasError('maxlength')">
+          Max length is {{ form.controls['name'].errors?.['maxlength']?.requiredLength }}
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+    <div class="tab__state" [ngClass]="{'tab__state--active': form.controls['state'].value, 
+          'tab__state--disable': !form.controls['state'].value}">
+      <div class="tab__block">
+        <div class="tab__circle" [ngClass]="{'tab__circle--active': form.controls['state'].value, 
+          'tab__circle--disable': !form.controls['state'].value}">
+        </div>
+        <span class="tab__text">State</span>
+      </div>
+      <mat-slide-toggle class="tab__slide" formControlName="state" hideIcon="true"></mat-slide-toggle>
+    </div>
+  </div>
+  <!-- Domain -->
+  <mat-form-field appearance="outline" class="mat-form-field" subscriptSizing="dynamic">
+    <mat-label>Domain</mat-label>
+    <input matInput formControlName="domain" required maxlength="70">
+    <mat-hint align="start">Enter a valid domain, for example, admixer.com </mat-hint>
+    <mat-error>
+      <ng-container *ngIf="form.controls['domain'].hasError('required')">
+        Required field
+      </ng-container>
+      <ng-container *ngIf="form.controls['domain'].hasError('pattern')">
+        <span>Enter a valid domain, for example, admixer.com</span>
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+
+  <!-- ID -->
+  <mat-form-field appearance="outline" floatLabel="always" class="mat-form-field" subscriptSizing="dynamic">
+    <mat-label>ID</mat-label>
+    <input formControlName="id" matInput placeholder="ID will be generated once you create an SSP">
+  </mat-form-field>
+  <!-- Account Manager -->
+  <mat-form-field appearance="outline" class="mat-form-field " subscriptSizing="dynamic">
+    <mat-label>Account Manager</mat-label>
+    <input matInput aria-label="Managers" type="text" [matAutocomplete]="auto" formControlName="acountManager">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let manager of filteredManagers | async" [value]="manager.name">
+        <span>{{manager.name}}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div class="tab__input-block">
+    <div>
+      <!-- Base Commission -->
+      <mat-form-field appearance="outline" class="mat-form-field mat-form-field--small " subscriptSizing="dynamic">
+        <mat-label>Base Commission</mat-label>
+        <input formControlName="baseCommission" matInput required type="number" wlOnlyIntegerNumber>
+        <span class="tab__text-suffix " matTextSuffix>%</span>
+        <mat-error>
+          <ng-container *ngIf="form.controls['baseCommission']?.hasError('required')">
+            Required field
+          </ng-container>
+          <ng-container *ngIf="form.controls['baseCommission']?.hasError('pattern')">
+            Value should be greater than 0
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+      <mat-icon class="tab__icon tab__icon--position"
+        matTooltip="Minimal guaranteed Commission that will be included in the Bidfloor parameter. Final profit could be higher in case of the 2nd-price auction"
+        [svgIcon]="ICONS.INFO"></mat-icon>
+    </div>
+    <div>
+      <!-- Integration Type -->
+      <mat-form-field appearance="outline" class="mat-form-field mat-form-field--small " subscriptSizing="dynamic">
+        <mat-label>Integration Type</mat-label>
+        <mat-select formControlName="integrationType" required>
+          <mat-option value="SSP">SSP</mat-option>
+          <mat-option value="Intermediary">Intermediary</mat-option>
+          <mat-option value="Both">Both</mat-option>
+        </mat-select>
+        <mat-error>
+          <ng-container *ngIf="form.controls['integrationType']?.hasError('required')">
+            Required field
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+      <mat-icon class="tab__icon tab__icon--position" [svgIcon]="ICONS.INFO"
+        matTooltip="This value will be used to fill the seller_type attribute in the sellers.json file"></mat-icon>
+    </div>
+    <div>
+      <!-- Default Currency -->
+      <mat-form-field appearance="outline" class="mat-form-field mat-form-field--small " subscriptSizing="dynamic">
+        <mat-label>Default Currency</mat-label>
+        <input matInput aria-label="Default Currency" type="text" [matAutocomplete]="auto"
+          formControlName="defaultCurrency">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let manager of filteredManagers | async" [value]="manager.name">
+            <span>{{manager.name}}</span>
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error>
+          <ng-container *ngIf="form.controls['defaultCurrency']?.hasError('required')">
+            Required field
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+      <mat-icon class="tab__icon tab__icon--position" [svgIcon]="ICONS.INFO"
+        matTooltip="The Currency that will be used if there is no Currency parameter in the Request"></mat-icon>
+    </div>
+  </div>
+  <!-- Is Confidential -->
+  <div class="tab__confidentail">
+    <mat-slide-toggle class="tab__slide  tab__slide--mr" formControlName="isConfidential"
+      hideIcon="true"></mat-slide-toggle>
+    <span>Is Confidential</span>
+    <mat-icon class="tab__icon" [svgIcon]="ICONS.INFO"
+      matTooltip="Turn on to hide the name of this SSP in the sellers.json file and schain.object in the outgoing OpenRTB request"></mat-icon>
+  </div>
+  <!-- QPS Limit -->
+  <h2 class="tab__qps-limit-title">QPS Limit</h2>
+  <div class="tab__qps-limit">
+    <div class="tab__qps-container">
+      <mat-form-field subscriptSizing="dynamic" hideRequiredMarker="true" appearance="outline"
+        class="mat-form-field mat-form-field--medium ">
+        <mat-label>Europe</mat-label>
+        <input matInput type="number" class="example-right-align" placeholder="0" formControlName="limit">
+        <span class="tab__text-sufix" matTextSuffix>/ 10 000</span>
+      </mat-form-field>
+
+      <mat-form-field subscriptSizing="dynamic" hideRequiredMarker="true" appearance="outline"
+        class="mat-form-field mat-form-field--medium ">
+        <mat-label>East Cost</mat-label>
+        <input matInput type="number" class="example-right-align" placeholder="0" formControlName="limit">
+        <span class="tab__text-sufix" matTextSuffix>/ 5 080</span>
+      </mat-form-field>
+
+      <mat-form-field subscriptSizing="dynamic" hideRequiredMarker="true" appearance="outline"
+        class="mat-form-field mat-form-field--medium">
+        <mat-label>Asia</mat-label>
+        <input matInput type="number" class="example-right-align" placeholder="0" formControlName="limit">
+        <span class="tab__text-sufix" matTextSuffix>/ 3 080 </span>
+      </mat-form-field>
+    </div>
+    <mat-error *ngIf="isControlInvalid('limit')">
+      <ng-container *ngIf="form.controls['defaultCurrency']?.hasError('required')">
+        At least one of the QPS Limits must be greater than 0
+      </ng-container></mat-error>
+  </div>
+</form>
