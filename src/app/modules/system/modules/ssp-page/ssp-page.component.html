@@ -1,17 +1,17 @@
 <section style="padding: 10px">
 	<div style="display: flex; justify-content: space-between">
-		<h2 (click)="openDialog()">SSPs</h2>
-		<button mat-button color="primary" mat-raised-button>+ NewSSP</button>
+		<h2>SSPs</h2>
+		<button mat-button color="primary" mat-raised-button (click)="openDialog()">+ NewSSP</button>
 	</div>
 	<div style="display: flex; justify-content: space-between">
 		<div>
-			<mat-form-field appearance="outline" class="ssp-page-search dense-2" style="padding: 5px 10px; height: 30px;"
+			<mat-form-field appearance="outline" class="ssp-page-search dense-3" style="padding: 5px 10px; height: 30px;"
 				color="primary">
 				<mat-label>Search</mat-label>
 				<input matInput placeholder="Placeholder">
 				<mat-icon class="ssp-page-search-icon" matPrefix [svgIcon]="ICONS.SEARCH"></mat-icon>
 			</mat-form-field>
-			<mat-form-field appearance="outline" class="ssp-page-search dense-2">
+			<mat-form-field appearance="outline" class="ssp-page-search dense-3">
 				<mat-label>Account Manager</mat-label>
 				<select matNativeControl required>
 					<option value="manager">Alexander Copperfield</option>

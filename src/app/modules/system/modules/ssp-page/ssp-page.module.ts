@@ -36,7 +36,7 @@ import { OnlyIntegerNumberDirective } from './components/manage-ssp-dialog/direc
 		ManageSspDialogComponent,
 		TabGroupComponent,
 		TabMainSettingsComponent,
-  OnlyIntegerNumberDirective,
+		OnlyIntegerNumberDirective,
 	],
 	imports: [
 		CommonModule,
