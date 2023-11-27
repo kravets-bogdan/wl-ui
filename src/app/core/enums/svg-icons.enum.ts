@@ -13,4 +13,6 @@ export enum ESvgIcons {
 	STATISTIC = 'statistic',
 	INFO = 'info',
 	PERCENT = 'percent',
+	COPY = 'copy',
+	SUCCESS = 'success',
 }

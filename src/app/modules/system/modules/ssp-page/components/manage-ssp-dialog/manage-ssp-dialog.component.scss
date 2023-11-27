@@ -17,6 +17,10 @@
 		margin: 0;
 	}
 
+	&__icon {
+		cursor: pointer;
+	}
+
 	&__content {
 		padding: 0 20px 2px 24px;
 		position: relative;

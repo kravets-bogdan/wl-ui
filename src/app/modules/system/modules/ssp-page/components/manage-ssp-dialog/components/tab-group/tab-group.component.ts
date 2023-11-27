@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { ESvgIcons } from '@wl/core/enums/svg-icons.enum';
 import { TabMainSettingsComponent } from '../tab-main-settings/tab-main-settings.component';
 
@@ -10,7 +10,7 @@ import { TabMainSettingsComponent } from '../tab-main-settings/tab-main-settings
 })
 export class TabGroupComponent {
 	readonly ICONS = ESvgIcons;
-
+	@Input() data: any;
 	@ViewChild(TabMainSettingsComponent) tabMainSettingsComponent!: TabMainSettingsComponent;
 
 	callSubmitInTabMainSettings(): void {

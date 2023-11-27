@@ -21,15 +21,14 @@ import { MAT_TABS_CONFIG } from '@angular/material/tabs';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { SspPageService } from '@wl/modules/system/modules/ssp-page/ssp-page.service';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatSelectModule } from '@angular/material/select';
-import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions, MatTooltipModule } from '@angular/material/tooltip';
+import { MAT_AUTOCOMPLETE_SCROLL_STRATEGY } from '@angular/material/autocomplete';
+import { MAT_SELECT_SCROLL_STRATEGY } from '@angular/material/select';
+import { MAT_TOOLTIP_SCROLL_STRATEGY } from '@angular/material/tooltip';
+import { Overlay, CloseScrollStrategy } from '@angular/cdk/overlay';
 
-export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
-	showDelay: 0,
-	hideDelay: 0,
-	touchendHideDelay: 0,
-};
+export function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
+	return () => overlay.scrollStrategies.close();
+}
 
 @NgModule({
 	declarations: [AppComponent, SidebarMenuComponent, HeaderBarComponent],
@@ -43,10 +42,6 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
 		CoreModule.forRoot(),
 		MatIconModule,
 		MatRadioModule,
-		// ! Double
-		MatAutocompleteModule,
-		MatTooltipModule,
-		MatSelectModule,
 	],
 
 	providers: [
@@ -54,7 +49,9 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
 		AppInitService,
 		SspPageService,
 
-		{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults },
+		{ provide: MAT_AUTOCOMPLETE_SCROLL_STRATEGY, useFactory: scrollFactory, deps: [Overlay] },
+		{ provide: MAT_SELECT_SCROLL_STRATEGY, useFactory: scrollFactory, deps: [Overlay] },
+		{ provide: MAT_TOOLTIP_SCROLL_STRATEGY, useFactory: scrollFactory, deps: [Overlay] },
 		{
 			provide: APP_INITIALIZER,
 			useFactory: initializeApp,

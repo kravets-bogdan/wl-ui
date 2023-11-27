@@ -1,8 +1,10 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, Input, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
-import {ESvgIcons, SSP, SSPResponse} from '@wl/core';
+import { ESvgIcons, SSP, SSPResponse } from '@wl/core';
+import { UtilsService } from '@wl/core/services';
+import { ManageSspDialogComponent } from '../manage-ssp-dialog/manage-ssp-dialog.component';
 
 export interface PeriodicElement {
 	name: string;
@@ -18,7 +20,7 @@ const ELEMENT_DATA: SSP[] = [
 		qps: 0,
 		bidPerformance: 0,
 		impressionRate: 0,
-		status: 1
+		status: 1,
 	},
 	{
 		id: 2,
@@ -26,7 +28,7 @@ const ELEMENT_DATA: SSP[] = [
 		qps: 0,
 		bidPerformance: 0,
 		impressionRate: 0,
-		status: 1
+		status: 1,
 	},
 	{
 		id: 3,
@@ -34,7 +36,7 @@ const ELEMENT_DATA: SSP[] = [
 		qps: 0,
 		bidPerformance: 0,
 		impressionRate: 0,
-		status: 1
+		status: 1,
 	},
 	{
 		id: 4,
@@ -42,7 +44,7 @@ const ELEMENT_DATA: SSP[] = [
 		qps: 0,
 		bidPerformance: 0,
 		impressionRate: 0,
-		status: 1
+		status: 1,
 	},
 	{
 		id: 6,
@@ -50,7 +52,7 @@ const ELEMENT_DATA: SSP[] = [
 		qps: 0,
 		bidPerformance: 0,
 		impressionRate: 0,
-		status: -1
+		status: -1,
 	},
 	{
 		id: 5,
@@ -58,8 +60,8 @@ const ELEMENT_DATA: SSP[] = [
 		qps: 0,
 		bidPerformance: 0,
 		impressionRate: 0,
-		status: 1
-	}
+		status: 1,
+	},
 ];
 
 @Component({
@@ -68,21 +70,20 @@ const ELEMENT_DATA: SSP[] = [
 	styleUrls: ['./ssp-table.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SspTableComponent implements OnInit, AfterViewInit{
-
+export class SspTableComponent implements OnInit, AfterViewInit {
 	@Input() public tableData: SSPResponse;
 
 	readonly ICONS = ESvgIcons;
 	displayedColumns: string[] = ['id', 'name', 'qps', 'bidPerformance', 'impressionRate', 'status', 'action'];
 	dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-	constructor(private _liveAnnouncer: LiveAnnouncer) {}
+	constructor(private _liveAnnouncer: LiveAnnouncer, public utilsService: UtilsService) {}
 
 	@ViewChild(MatSort) sort: MatSort;
 
 	public ngOnInit() {
 		const tableData2 = this.tableData.data;
-		console.log('this.tableData',this.tableData.data);
+		console.log('this.tableData', this.tableData.data);
 	}
 
 	public ngAfterViewInit(): void {
@@ -97,7 +98,17 @@ export class SspTableComponent implements OnInit, AfterViewInit{
 		}
 	}
 
-	editRow(element: any) {}
+	editRow(element: any) {
+		this.utilsService.openDialog(ManageSspDialogComponent, { width: '760px', data: element });
+	}
 
-	deleteRow(element: any) {}
+	deleteRow(element: any) {
+		this.utilsService.openDialog(ManageSspDialogComponent, {
+			width: '760px',
+			data: {
+				element,
+				isDelete: true,
+			},
+		});
+	}
 }

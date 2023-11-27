@@ -7,21 +7,24 @@
 	}
 
 	&__state {
-		background: color-mix(in srgb, var(--primary-color) 20%, transparent);
-		justify-content: center;
+		background: color-mix(in srgb, var(--black-color) 10%, transparent);
+		justify-content: flex-start;
 		align-items: center;
 		border-radius: 4px;
 		margin-left: 24px;
-		padding: 16px 8px;
+		padding: 10px 16px;
+		min-width: 148px;
 		display: flex;
 		height: 40px;
 
 		&--active {
 			background: color-mix(in srgb, var(--primary-color) 20%, transparent);
+			justify-content: space-between;
 		}
 
 		&--disable {
 			background: color-mix(in srgb, var(--black-color) 10%, transparent);
+			justify-content: space-between;
 		}
 	}
 
@@ -39,6 +42,7 @@
 	}
 
 	&__circle {
+		background: color-mix(in srgb, var(--black-color) 40%, transparent);
 		border-radius: 50%;
 		margin-right: 7px;
 		height: 6px;
@@ -60,7 +64,6 @@
 	}
 
 	&__icon {
-		fill: color-mix(in srgb, var(--blue-color) 100%, transparent);
 		margin-left: 10px;
 		height: 17px;
 		width: 17px;
@@ -72,6 +75,14 @@
 		&--position {
 			position: relative;
 			top: 3px;
+		}
+
+		&--blue {
+			fill: color-mix(in srgb, var(--blue-color) 100%, transparent);
+		}
+
+		&--green {
+			fill: color-mix(in srgb, var(--primary-color) 100%, transparent);
 		}
 	}
 

@@ -26,6 +26,7 @@ import { AsyncPipe } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { OnlyIntegerNumberDirective } from './components/manage-ssp-dialog/directive/only-integer-number.directive';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
 	declarations: [
@@ -40,12 +41,7 @@ import { OnlyIntegerNumberDirective } from './components/manage-ssp-dialog/direc
 	],
 	imports: [
 		CommonModule,
-		RouterModule.forChild([
-			{
-				path: 'ssp',
-				component: SspPageComponent,
-			},
-		]),
+		MatTooltipModule,
 		MatDividerModule,
 		MatTabsModule,
 		MatSelectModule,
@@ -53,6 +49,7 @@ import { OnlyIntegerNumberDirective } from './components/manage-ssp-dialog/direc
 		AsyncPipe,
 		MatTableModule,
 		MatSlideToggleModule,
+		ClipboardModule,
 		MatSortModule,
 		MatDialogModule,
 		MatIconModule,
@@ -64,7 +61,12 @@ import { OnlyIntegerNumberDirective } from './components/manage-ssp-dialog/direc
 		NgFor,
 		MatChipsModule,
 		ReactiveFormsModule,
-		MatTooltipModule,
+		RouterModule.forChild([
+			{
+				path: 'ssp',
+				component: SspPageComponent,
+			},
+		]),
 	],
 	providers: [],
 })

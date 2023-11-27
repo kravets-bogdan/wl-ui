@@ -1,13 +1,20 @@
 <section class="dialog">
   <div class="dialog__header">
-    <h2 class="dialog__title">
-      New SSP
-    </h2>
-    <mat-icon [svgIcon]="ICONS.CLOSE" mat-dialog-close></mat-icon>
+    <ng-container *ngIf="data; else elseTemplate">
+      <h2 class="dialog__title">
+        {{ isDelete ? 'Removed SPP:' + data.element.name : 'Edit SPP:' + data.name }}
+      </h2>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <h2 class="dialog__title">
+        New SSP
+      </h2>
+    </ng-template>
+    <mat-icon class="dialog__icon" [svgIcon]="ICONS.CLOSE" mat-dialog-close></mat-icon>
   </div>
 
   <mat-dialog-content class="dialog__content">
-    <wl-tab-group></wl-tab-group>
+    <wl-tab-group [data]="data"></wl-tab-group>
   </mat-dialog-content>
 
   <mat-dialog-actions class="dialog__footer" align="end">
