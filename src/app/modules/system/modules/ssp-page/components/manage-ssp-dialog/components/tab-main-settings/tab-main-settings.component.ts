@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, ChangeDetectorRef, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ESvgIcons } from '@wl/core/enums/svg-icons.enum';
 import { Observable, map, startWith } from 'rxjs';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { QpsControls } from '@wl/core';
 
 @Component({
 	selector: 'wl-tab-main-settings',
@@ -11,6 +12,20 @@ import { Clipboard } from '@angular/cdk/clipboard';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabMainSettingsComponent implements OnInit {
+	readonly qpsControls: QpsControls[] = [
+		{
+			label: 'Europe',
+			suffix: '/ 10 000',
+		},
+		{
+			label: 'East Cost',
+			suffix: '/ 5 080',
+		},
+		{
+			label: 'Asia',
+			suffix: '/ 3 080',
+		},
+	];
 	readonly ICONS = ESvgIcons;
 	isCopied: boolean = false;
 	isDelete: boolean = false;
@@ -41,6 +56,10 @@ export class TabMainSettingsComponent implements OnInit {
 		private readonly cdr: ChangeDetectorRef,
 		private clipboard: Clipboard,
 	) {}
+
+	get limit(): FormArray {
+		return this.form.controls['limit'] as FormArray;
+	}
 
 	ngOnInit(): void {
 		if (this.tabData?.isDelete) {
@@ -104,7 +123,19 @@ export class TabMainSettingsComponent implements OnInit {
 			integrationType: [{ value: '', disabled: this.isDelete }, Validators.required],
 			defaultCurrency: [{ value: '', disabled: this.isDelete }, Validators.required],
 			isConfidential: [{ value: false, disabled: this.isDelete }, Validators.required],
-			limit: [{ value: '', disabled: this.isDelete }, Validators.required],
+			limit: this.fb.array(
+				[
+					{ value: '', disabled: this.isDelete },
+					{ value: '', disabled: this.isDelete },
+					{ value: '', disabled: this.isDelete },
+				],
+				this.atLeastOneInputValidator(),
+			),
 		});
+	}
+
+	private atLeastOneInputValidator(): ValidatorFn {
+		return (control: AbstractControl): { [key: string]: boolean } | null =>
+			control.value.some((value: string) => !!value) ? null : { atLeastOne: true };
 	}
 }

@@ -143,31 +143,18 @@
   <!-- QPS Limit -->
   <h2 class="tab__qps-limit-title">QPS Limit</h2>
   <div class="tab__qps-limit">
-    <div class="tab__qps-container">
-      <mat-form-field subscriptSizing="dynamic" hideRequiredMarker="true" appearance="outline"
-        class="mat-form-field mat-form-field--medium ">
-        <mat-label>Europe</mat-label>
-        <input matInput type="number" class="example-right-align" placeholder="0" formControlName="limit">
-        <span class="tab__text-sufix" matTextSuffix>/ 10 000</span>
-      </mat-form-field>
-
-      <mat-form-field subscriptSizing="dynamic" hideRequiredMarker="true" appearance="outline"
-        class="mat-form-field mat-form-field--medium ">
-        <mat-label>East Cost</mat-label>
-        <input matInput type="number" class="example-right-align" placeholder="0" formControlName="limit">
-        <span class="tab__text-sufix" matTextSuffix>/ 5 080</span>
-      </mat-form-field>
-
-      <mat-form-field subscriptSizing="dynamic" hideRequiredMarker="true" appearance="outline"
-        class="mat-form-field mat-form-field--medium">
-        <mat-label>Asia</mat-label>
-        <input matInput type="number" class="example-right-align" placeholder="0" formControlName="limit">
-        <span class="tab__text-sufix" matTextSuffix>/ 3 080 </span>
-      </mat-form-field>
+    <div class="tab__qps-container" formArrayName="limit">
+      <ng-container *ngFor="let qpsLimit of limit.controls; let i = index">
+        <mat-form-field subscriptSizing="dynamic" hideRequiredMarker="true" appearance="outline"
+          class="mat-form-field mat-form-field--medium">
+          <mat-label>{{ qpsControls[i].label }}</mat-label>
+          <input matInput type="number" placeholder="0" [formControlName]="i">
+          <span class="tab__text-sufix" matTextSuffix>{{ qpsControls[i].suffix }}</span>
+        </mat-form-field>
+      </ng-container>
     </div>
     <mat-error *ngIf="isControlInvalid('limit')">
-      <ng-container *ngIf="form.controls['defaultCurrency']?.hasError('required')">
-        At least one of the QPS Limits must be greater than 0
-      </ng-container></mat-error>
+      At least one of the QPS Limits must be greater than 0
+    </mat-error>
   </div>
 </form>
